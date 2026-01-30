@@ -28,10 +28,10 @@ void MyEngineSystem::applyResolutionSetting(GraphicsEngine& gfx, const std::stri
     }
     if (name == "Secondary Colour Setting") {
         switch (selection) {
-        case 0: *secondaryColor = SDL_Color{ 255, 255, 255 }; break;
-        case 1: *secondaryColor = SDL_Color{ 255, 0, 0 }; break;
-        case 2: *secondaryColor = SDL_Color{ 0, 255, 0 }; break;
-        case 3: *secondaryColor = SDL_Color{ 0, 0, 255 }; break;
+        case 0: *tertiaryColor = SDL_Color{ 255, 255, 255 }; break;
+        case 1: *tertiaryColor = SDL_Color{ 255, 0, 0 }; break;
+        case 2: *tertiaryColor = SDL_Color{ 0, 255, 0 }; break;
+        case 3: *tertiaryColor = SDL_Color{ 0, 0, 255 }; break;
         default:; break;
         }
 
