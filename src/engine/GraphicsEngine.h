@@ -52,7 +52,6 @@ class GraphicsEngine {
 	friend class XCube2Engine;
 	private:
 		SDL_Window * window;
-		static SDL_Renderer * renderer;
 		SDL_Color drawColor;
 
 		TTF_Font * font;
@@ -62,6 +61,7 @@ class GraphicsEngine {
 		GraphicsEngine();
 
 	public:	
+		static SDL_Renderer* renderer;
 		~GraphicsEngine();
 
 		void useFont(TTF_Font * font);
