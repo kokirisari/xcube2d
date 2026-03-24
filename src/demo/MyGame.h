@@ -13,6 +13,7 @@ struct GameKey {
 class MyGame : public AbstractGame {
 private:
 	Rect box;
+	Rect canvas;
 	Vector2i velocity;
 
 	std::vector<std::shared_ptr<Button>> buttons;
@@ -31,6 +32,7 @@ private:
 	void renderButtons();
 	void loadButtons();
 	void buttonsAction();
+
 public:
 	MyGame();
 	~MyGame();

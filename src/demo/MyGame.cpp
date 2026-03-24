@@ -1,7 +1,7 @@
 #include "MyGame.h"
 std::shared_ptr<MyEngineSystem> mesfx;
 
-MyGame::MyGame() : AbstractGame(), score(0), lives(3), numKeys(5), gameWon(false), buttonClicked(false), box(0, 0, 30, 30) {	
+MyGame::MyGame() : AbstractGame(), score(0), lives(3), numKeys(5), gameWon(false), buttonClicked(false), box(0, 0, 30, 30), canvas(0, 0, engineSystem.xResolution, engineSystem.xResolution * 9 / 16) {
 	loadButtons();
 	TTF_Font* font = ResourceManager::loadFont("res/fonts/arial.ttf", 72);
 	gfx->setWindowSize(engineSystem.xResolution, engineSystem.xResolution * 9/16);
@@ -45,6 +45,7 @@ void MyGame::loadButtons()
 		buttons.push_back(b);
 	}
 }
+
 void MyGame::buttonsAction()
 {
 	for (auto& b : buttons)
@@ -53,8 +54,7 @@ void MyGame::buttonsAction()
 
 		if (clicked)
 		{
-			bool buttonClicked = true;
-			if (b->selection < 4)
+			if (b->selection < 3)
 			{
 				b->selection++;
 			}
@@ -66,6 +66,7 @@ void MyGame::buttonsAction()
 			}
 	}
 }
+
 
 MyGame::~MyGame() {
 
@@ -113,6 +114,9 @@ void MyGame::update() {
 }
 
 void MyGame::render() {
+	gfx->clearScreen();
+	gfx->setDrawColor(SDL_COLOR_BLACK);
+	gfx->fillRect(canvas.x, canvas.y, canvas.w, canvas.h);
 	gfx->setDrawColor(tertiaryColor);
 	gfx->drawRect(box);
 
