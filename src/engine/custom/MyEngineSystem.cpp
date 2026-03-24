@@ -58,11 +58,16 @@ bool MyEngineSystem::checkButtonClicked(const Button& b, std::shared_ptr<EventEn
 
     Point2 mousePos = evt->getMousePos();
 
+    if (!evt->isPressed(BTN_LEFT)) {
+        buttonClicked = false;
+        return false;
+    }
+
     if (evt->isPressed(BTN_LEFT)) {
         if (mousePos.x >= b.rect.x && mousePos.x <= b.rect.x + b.rect.w &&
-            mousePos.y >= b.rect.y && mousePos.y <= b.rect.y + b.rect.h) {
+            mousePos.y >= b.rect.y && mousePos.y <= b.rect.y + b.rect.h && !buttonClicked) {
+            buttonClicked = true;
             return true;
-            
         }
     }
     return false;
